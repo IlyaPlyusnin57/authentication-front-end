@@ -1,0 +1,32 @@
+.input-container {
+  position: relative;
+
+  &:not(:first-of-type) {
+    margin-top: 1rem;
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    outline: none;
+    border: 1px solid gray;
+  }
+
+  .username-status {
+    position: absolute;
+    top: 20%;
+    right: 1rem;
+  }
+
+  .error-icon {
+    color: red;
+  }
+
+  .check-icon {
+    color: green;
+  }
+}
+
+.error-border {
+  border: 1px solid red;
+}

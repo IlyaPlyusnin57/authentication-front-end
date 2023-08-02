@@ -1,0 +1,57 @@
+.form-input-container {
+  position: relative;
+
+  &:not(:first-of-type) {
+    margin-top: 1rem;
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    outline: none;
+    border: 1px solid gray;
+  }
+
+  .check-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    color: green;
+  }
+
+  .error-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    color: red;
+  }
+
+  .progress-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  input:invalid[lostfocus="true"] + .error-message {
+    display: block;
+  }
+
+  input:invalid[lostfocus="true"] {
+    border: 1px solid red;
+  }
+}
+
+.error-container {
+  .error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+}

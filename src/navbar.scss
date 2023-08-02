@@ -1,0 +1,12 @@
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #6c0ecb;
+  color: white;
+  padding: 10px;
+
+  ul li {
+    list-style: none;
+    cursor: pointer;
+  }
+}

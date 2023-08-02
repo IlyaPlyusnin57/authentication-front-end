@@ -1,0 +1,32 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+  height: 100vh;
+
+  form {
+    width: clamp(300px, 55vw, 500px);
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 10px;
+
+    button {
+      appearance: none;
+      border: 1px solid gray;
+      border-radius: 5px;
+      background-color: #6c0ecb;
+      width: 100%;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+    }
+  }
+}

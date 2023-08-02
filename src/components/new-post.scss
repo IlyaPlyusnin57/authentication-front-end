@@ -1,0 +1,33 @@
+.post {
+  margin: 1rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  padding: 1rem;
+
+  .delete-icon-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .delete-icon {
+      font-size: 16px;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid gray;
+    border-radius: 4px;
+    outline: none;
+  }
+  button {
+    appearance: none;
+    border: 1px solid purple;
+    border-radius: 0.5rem;
+    background-color: #6c0ecb;
+    margin-top: 1rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+  }
+}
