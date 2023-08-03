@@ -86,32 +86,32 @@ import axios from "axios";
 // }
 
 class ApiCalls {
-  static async getPosts(user) {
+  static async getPosts(api, user) {
     try {
-      const res = await axios.get(`posts/find/${user._id}`);
+      const res = await api.get(`posts/find/${user._id}`);
       return res.data;
     } catch (error) {
       console.log(error);
     }
   }
 
-  static async handleDelete(post, user) {
+  static async handleDelete(api, post, user) {
     try {
-      const res = await axios.delete(`posts/delete/${post._id}`, {
+      const res = await api.delete(`posts/delete/${post._id}`, {
         data: { userId: user._id },
       });
 
-      return res.data;
+      return res;
     } catch (error) {
       console.log(error);
     }
   }
 
-  static async createPost(postText, user) {
+  static async createPost(api, text, user) {
     try {
-      const { data: post } = await axios.post("posts/post", {
+      const { data: post } = await api.post("posts/post", {
         userId: user._id,
-        text: postText.current.value,
+        text,
       });
       return post;
     } catch (error) {
@@ -119,11 +119,14 @@ class ApiCalls {
     }
   }
 
-  static async logout(user) {
+  static async logout(user, setUserInfo) {
     try {
-      console.log("logout ran");
-      const res = await axios.get(`auth/logout/${user._id}`);
-      return res.data;
+      setUserInfo({
+        authed: false,
+        user: null,
+      });
+      sessionStorage.removeItem("accessToken");
+      await axios.get(`auth/logout/${user._id}`);
     } catch (error) {
       console.log(error);
     }
