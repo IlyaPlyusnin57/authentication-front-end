@@ -26,14 +26,16 @@ function Login() {
         ...data,
       });
 
-      console.log({ loginData: res.data });
+      if (res.status === 200) {
+        sessionStorage.setItem("accessToken", res.data.accessToken);
 
-      setUserInfo({
-        authed: true,
-        user: res.data,
-      });
+        setUserInfo({
+          authed: true,
+          user: res.data,
+        });
 
-      navigate("/home");
+        navigate("/home");
+      }
     } catch (error) {
       setError(error?.response?.data);
     }
