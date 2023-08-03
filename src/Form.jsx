@@ -30,6 +30,8 @@ function Form() {
     const res = await axios.post("/auth/register", data);
 
     if (res.status === 200) {
+      sessionStorage.setItem("accessToken", res.data.accessToken);
+
       setUserInfo({
         authed: true,
         user: res.data,
