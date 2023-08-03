@@ -3,10 +3,9 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Post from "./Post";
 import NewPost from "./components/NewPost";
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ApiCalls } from "./api/ApiCalls";
-import axiosConfig from "./api/axiosConfig";
-import axios from "axios";
+import useAxiosConfig from "./api/useAxiosConfig";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -14,15 +13,12 @@ function Posts() {
 
   const { userInfo, setUserInfo } = useAuth();
 
-  useEffect(() => {
-    const interceptor = axiosConfig(userInfo.user, setUserInfo);
-    return () => axios.interceptors.request.eject(interceptor);
-  }, [userInfo.user]);
+  const api = useAxiosConfig();
 
   const { status, error } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
-      const posts = await ApiCalls.getPosts(userInfo.user);
+      const posts = await ApiCalls.getPosts(api, userInfo.user);
       setPosts(posts);
       return posts;
     },
@@ -38,7 +34,7 @@ function Posts() {
 
   return (
     <>
-      <NewPost userInfo={userInfo} setPosts={setPosts} />
+      <NewPost user={userInfo.user} setPosts={setPosts} />
       <div ref={parent}>
         {posts.map((post) => {
           return <Post key={post._id} post={post} setPosts={setPosts} />;
