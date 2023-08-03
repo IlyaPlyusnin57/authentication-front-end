@@ -106,6 +106,12 @@ function Form() {
           value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
           message: "Not a valid email",
         },
+        validate: async (value) => {
+          const res = await axios.post("/auth/checkEmail", {
+            email: value,
+          });
+          return !res.data || "Email exists in the db";
+        },
       },
     },
     {
