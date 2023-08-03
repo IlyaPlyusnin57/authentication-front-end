@@ -1,4 +1,3 @@
-import React from "react";
 import "./navbar.scss";
 
 import { ApiCalls } from "./api/ApiCalls";
@@ -15,16 +14,7 @@ function Navbar() {
       <ul>
         <li
           onClick={async () => {
-            console.log({ useriS: user });
-            const res = await ApiCalls.logout(user);
-
-            if (res === "success") {
-              console.log("success");
-              setUserInfo({
-                authed: false,
-                user: null,
-              });
-            }
+            await ApiCalls.logout(user, setUserInfo);
           }}
         >
           Logout
