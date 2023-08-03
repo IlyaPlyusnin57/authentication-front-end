@@ -13,7 +13,6 @@ async function refreshToken(user, setUserInfo) {
     return res.data;
   } catch (error) {
     console.log(error);
-    console.log("SHOULD BE LOGGING OUT!");
     await ApiCalls.logout(user, setUserInfo);
   }
 }
